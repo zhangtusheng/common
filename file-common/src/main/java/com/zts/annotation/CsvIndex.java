@@ -6,6 +6,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.METHOD, ElementType.FIELD, ElementType.PARAMETER, ElementType.LOCAL_VARIABLE})
@@ -15,7 +16,7 @@ public @interface CsvIndex {
 	 * 索引
 	 * @return
 	 */
-	int index() default 0;
+	int index() default -1;
 
 	/**
 	 * 索引名称

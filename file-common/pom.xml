@@ -29,6 +29,17 @@
 			<artifactId>opencsv</artifactId>
 			<version>5.5</version> <!-- 使用你希望的版本 -->
 		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version> 1.2.70</version>
+		</dependency>
 	</dependencies>
 
 </project>
