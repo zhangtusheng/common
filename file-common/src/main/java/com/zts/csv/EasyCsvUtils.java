@@ -37,7 +37,6 @@ public class EasyCsvUtils<T> {
 		}
 
 		// 如果没有注解的话，默认按照变量名字来进行匹配。
-
 		for (String[] row : rows) {
 			if (i < headRow) {
 				i++;
