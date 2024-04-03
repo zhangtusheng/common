@@ -6,9 +6,11 @@ import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
@@ -35,8 +37,6 @@ public class EasyCsvUtils<T> {
 				filedMap.put(annotation.index(), field);
 			}
 		}
-
-		// 如果没有注解的话，默认按照变量名字来进行匹配。
 		for (String[] row : rows) {
 			if (i < headRow) {
 				i++;
@@ -64,6 +64,25 @@ public class EasyCsvUtils<T> {
 			dataList.add(t);
 		}
 		return dataList;
+	}
+
+	/**
+	 * 传入的headerMap一定要是有序的。
+	 * @param tClass
+	 * @param headerMap
+	 */
+	private Map<Integer, Field> getFieldMap(Class<T> tClass, Map<Integer, String> headerMap) {
+		Field[] declaredFields = tClass.getDeclaredFields();
+		Map<String, Field> fieldMap = Arrays.stream(declaredFields).collect(Collectors.toMap(Field::getName, field -> field));
+		int i = 0;
+		Map<Integer, Field> result = new HashMap<>();
+		for (Map.Entry<Integer, String> integerStringEntry : headerMap.entrySet()) {
+			if (fieldMap.containsKey(integerStringEntry.getValue())) {
+				result.put(i, fieldMap.get(integerStringEntry.getValue()));
+			}
+			i++;
+		}
+		return result;
 	}
 
 }
