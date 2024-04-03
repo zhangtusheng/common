@@ -24,6 +24,12 @@
 			<artifactId>nlp</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.github.sszuev</groupId>
+			<artifactId>fasttext</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 	</dependencies>
 
 </project>
